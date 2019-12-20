@@ -1,0 +1,11 @@
+# in this example, we'll use the output that was created in the outputs.yaml file
+Resources:
+  MySecureInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1a
+      ImageId: ami-a4c7edb2
+      InstanceType: t2.micro
+      SecurityGroups:
+        # We reference the output here, using the Fn::ImportValue function
+        - !ImportValue SSHSecurityGroup
